@@ -3,6 +3,11 @@ package com.smartbear.har.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+/**
+ * This objects contains info about a request coming from browser cache.
+ *
+ * @see <a href="http://www.softwareishard.com/blog/har-12-spec/#cache">specification</a>
+ */
 @JsonPropertyOrder({
         "beforeRequest",
         "afterRequest",
@@ -16,6 +21,12 @@ public class HarCache {
     private HarCacheRequest afterRequest;
     @JsonProperty("comment")
     private String comment;
+
+    public HarCache(HarCacheRequest beforeRequest, HarCacheRequest afterRequest, String comment) {
+        this.beforeRequest = beforeRequest;
+        this.afterRequest = afterRequest;
+        this.comment = comment;
+    }
 
     public HarCacheRequest getBeforeRequest() {
         return beforeRequest;
