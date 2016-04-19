@@ -93,6 +93,6 @@ public class HarLog {
 
     @Override
     public String toString() {
-        return "ClassPojo [pages = " + pages + ", browser = " + browser + ", entries = " + entries + ", comment = " + comment + ", creator = " + creator + ", version = " + version + "]";
+        return "HarLog [pages = " + pages + ", browser = " + browser + ", entries = " + entries + ", comment = " + comment + ", creator = " + creator + ", version = " + version + "]";
     }
 }

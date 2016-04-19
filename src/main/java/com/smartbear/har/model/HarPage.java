@@ -76,6 +76,6 @@ public class HarPage {
     @Override
     public String toString()
     {
-        return "ClassPojo [id = "+id+", title = "+title+", pageTimings = "+pageTimings+", comment = "+comment+", startedDateTime = "+startedDateTime+"]";
+        return "HarPage [id = "+id+", title = "+title+", pageTimings = "+pageTimings+", comment = "+comment+", startedDateTime = "+startedDateTime+"]";
     }
 }

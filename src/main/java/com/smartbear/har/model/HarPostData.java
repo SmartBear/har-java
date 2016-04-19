@@ -27,6 +27,13 @@ public class HarPostData {
     @JsonProperty("comment")
     private String comment;
 
+    public HarPostData(String mimeType, List<HarParams> params, String text, String comment) {
+        this.mimeType = mimeType;
+        this.params = params;
+        this.text = text;
+        this.comment = comment;
+    }
+
     public String getText ()
     {
         return text;
@@ -65,13 +72,6 @@ public class HarPostData {
     public void setMimeType (String mimeType)
     {
         this.mimeType = mimeType;
-    }
-
-    public HarPostData(String mimeType, List<HarParams> params, String text, String comment) {
-        this.mimeType = mimeType;
-        this.params = params;
-        this.text = text;
-        this.comment = comment;
     }
 
     @Override

@@ -43,6 +43,20 @@ public class HarEntry {
     @JsonProperty("comment")
     private String comment;
 
+    public HarEntry(String pageref, String startedDateTime, long time, HarRequest request, HarResponse response, HarCache cache,
+                    HarTimings timings, String serverIPAddress, String connection, String comment) {
+        this.pageref = pageref;
+        this.startedDateTime = startedDateTime;
+        this.time = time;
+        this.request = request;
+        this.response = response;
+        this.cache = cache;
+        this.timings = timings;
+        this.serverIPAddress = serverIPAddress;
+        this.connection = connection;
+        this.comment = comment;
+    }
+
     public String getPageref() {
         return pageref;
     }

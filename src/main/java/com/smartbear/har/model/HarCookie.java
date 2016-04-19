@@ -37,6 +37,17 @@ public class HarCookie {
     @JsonProperty("comment")
     private String comment;
 
+    public HarCookie(String name, String value, String path, String domain, String expires, boolean httpOnly, boolean secure, String comment) {
+        this.name = name;
+        this.value = value;
+        this.path = path;
+        this.domain = domain;
+        this.expires = expires;
+        this.httpOnly = httpOnly;
+        this.secure = secure;
+        this.comment = comment;
+    }
+
     public String getExpires ()
     {
         return expires;

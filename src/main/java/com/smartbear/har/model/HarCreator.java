@@ -22,6 +22,12 @@ public class HarCreator {
     @JsonProperty("comment")
     private String comment;
 
+    public HarCreator(String name, String comment, String version) {
+        this.name = name;
+        this.comment = comment;
+        this.version = version;
+    }
+
     public String getName() {
         return name;
     }
@@ -43,12 +49,6 @@ public class HarCreator {
     }
 
     public void setVersion(String version) {
-        this.version = version;
-    }
-
-    public HarCreator(String name, String comment, String version) {
-        this.name = name;
-        this.comment = comment;
         this.version = version;
     }
 

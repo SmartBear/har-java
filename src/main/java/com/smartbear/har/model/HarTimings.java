@@ -37,6 +37,17 @@ public class HarTimings {
     @JsonProperty("comment")
     private String comment;
 
+    public HarTimings(Long blocked, Long dns, Long connect, Long send, Long wait, Long receive, Long ssl, String comment) {
+        this.blocked = blocked;
+        this.dns = dns;
+        this.connect = connect;
+        this.send = send;
+        this.wait = wait;
+        this.receive = receive;
+        this.ssl = ssl;
+        this.comment = comment;
+    }
+
     public Long getSend ()
     {
         return send;

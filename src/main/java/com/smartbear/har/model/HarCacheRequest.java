@@ -25,6 +25,14 @@ public class HarCacheRequest {
     @JsonProperty("comment")
     private String comment;
 
+    public HarCacheRequest(Date expires, Date lastAccess, String eTag, Long hitCount, String comment) {
+        this.expires = expires;
+        this.lastAccess = lastAccess;
+        this.eTag = eTag;
+        this.hitCount = hitCount;
+        this.comment = comment;
+    }
+
     public String getETag() {
         return eTag;
     }

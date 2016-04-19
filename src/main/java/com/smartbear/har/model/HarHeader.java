@@ -21,6 +21,12 @@ public class HarHeader {
     @JsonProperty("comment")
     private String comment;
 
+    public HarHeader(String name, String value, String comment) {
+        this.name = name;
+        this.value = value;
+        this.comment = comment;
+    }
+
     public String getName() {
         return name;
     }

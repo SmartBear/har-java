@@ -44,6 +44,20 @@ public class HarRequest {
     @JsonProperty("comment")
     private String comment;
 
+    public HarRequest(Long headersSize, String method, String url, String httpVersion, List<HarCookie> cookies, List<HarHeader> headers,
+                      List<HarQueryString> queryString, HarPostData postData, Long bodySize, String comment) {
+        this.headersSize = headersSize;
+        this.method = method;
+        this.url = url;
+        this.httpVersion = httpVersion;
+        this.cookies = cookies;
+        this.headers = headers;
+        this.queryString = queryString;
+        this.postData = postData;
+        this.bodySize = bodySize;
+        this.comment = comment;
+    }
+
     public List<HarHeader> getHeaders() {
         return headers;
     }

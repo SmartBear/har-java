@@ -28,6 +28,14 @@ public class HarParams {
     @JsonProperty("comment")
     private String comment;
 
+    public HarParams(String name, String value, String fileName, String contentType, String comment) {
+        this.name = name;
+        this.value = value;
+        this.fileName = fileName;
+        this.contentType = contentType;
+        this.comment = comment;
+    }
+
     public String getName ()
     {
         return name;
@@ -75,14 +83,6 @@ public class HarParams {
 
     public void setComment (String comment)
     {
-        this.comment = comment;
-    }
-
-    public HarParams(String name, String value, String fileName, String contentType, String comment) {
-        this.name = name;
-        this.value = value;
-        this.fileName = fileName;
-        this.contentType = contentType;
         this.comment = comment;
     }
 

@@ -18,6 +18,12 @@ public class HarQueryString {
 
     private String comment;
 
+    public HarQueryString(String name, String value, String comment) {
+        this.name = name;
+        this.value = value;
+        this.comment = comment;
+    }
+
     public String getName() {
         return name;
     }
@@ -39,12 +45,6 @@ public class HarQueryString {
     }
 
     public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public HarQueryString(String name, String value, String comment) {
-        this.name = name;
-        this.value = value;
         this.comment = comment;
     }
 

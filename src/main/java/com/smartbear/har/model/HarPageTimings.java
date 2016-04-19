@@ -46,4 +46,10 @@ public class HarPageTimings {
         this.comment = comment;
     }
 
+    @Override
+    public String toString()
+    {
+        return "HarPageTimings [onLoad = "+onLoad+", onContentLoad = "+onContentLoad+", comment = "+comment+"]";
+    }
+
 }

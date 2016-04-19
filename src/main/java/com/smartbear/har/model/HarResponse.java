@@ -45,6 +45,19 @@ public class HarResponse {
     @JsonProperty("comment")
     private String comment;
 
+    public HarResponse(int status, String statusText, String httpVersion, List<HarCookie> cookies, List<HarHeader> headers, HarContent content, String redirectURL, Long headersSize, Long bodySize, String comment) {
+        this.status = status;
+        this.statusText = statusText;
+        this.httpVersion = httpVersion;
+        this.cookies = cookies;
+        this.headers = headers;
+        this.content = content;
+        this.redirectURL = redirectURL;
+        this.headersSize = headersSize;
+        this.bodySize = bodySize;
+        this.comment = comment;
+    }
+
     public HarContent getContent ()
     {
         return content;

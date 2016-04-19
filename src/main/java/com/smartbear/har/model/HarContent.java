@@ -28,6 +28,14 @@ public class HarContent {
     @JsonProperty("comment")
     private String comment;
 
+    public HarContent(Long size, Long compression, String mimeType, String text, String comment) {
+        this.size = size;
+        this.compression = compression;
+        this.mimeType = mimeType;
+        this.text = text;
+        this.comment = comment;
+    }
+
     public String getText ()
     {
         return text;
