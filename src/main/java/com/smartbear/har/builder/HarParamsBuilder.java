@@ -9,32 +9,32 @@ public class HarParamsBuilder {
     private String contentType;
     private String comment;
 
-    public HarParamsBuilder setName(String name) {
+    public HarParamsBuilder withName(String name) {
         this.name = name;
         return this;
     }
 
-    public HarParamsBuilder setValue(String value) {
+    public HarParamsBuilder withValue(String value) {
         this.value = value;
         return this;
     }
 
-    public HarParamsBuilder setFileName(String fileName) {
+    public HarParamsBuilder withFileName(String fileName) {
         this.fileName = fileName;
         return this;
     }
 
-    public HarParamsBuilder setContentType(String contentType) {
+    public HarParamsBuilder withContentType(String contentType) {
         this.contentType = contentType;
         return this;
     }
 
-    public HarParamsBuilder setComment(String comment) {
+    public HarParamsBuilder withComment(String comment) {
         this.comment = comment;
         return this;
     }
 
-    public HarParams createHarParams() {
+    public HarParams build() {
         return new HarParams(name, value, fileName, contentType, comment);
     }
 }

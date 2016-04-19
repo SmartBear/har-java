@@ -7,22 +7,22 @@ public class HarCreatorBuilder {
     private String comment;
     private String version;
 
-    public HarCreatorBuilder setName(String name) {
+    public HarCreatorBuilder withName(String name) {
         this.name = name;
         return this;
     }
 
-    public HarCreatorBuilder setComment(String comment) {
+    public HarCreatorBuilder withComment(String comment) {
         this.comment = comment;
         return this;
     }
 
-    public HarCreatorBuilder setVersion(String version) {
+    public HarCreatorBuilder withVersion(String version) {
         this.version = version;
         return this;
     }
 
-    public HarCreator createHarCreator() {
+    public HarCreator build() {
         return new HarCreator(name, comment, version);
     }
 }

@@ -11,27 +11,27 @@ public class HarPostDataBuilder {
     private String text;
     private String comment;
 
-    public HarPostDataBuilder setMimeType(String mimeType) {
+    public HarPostDataBuilder withMimeType(String mimeType) {
         this.mimeType = mimeType;
         return this;
     }
 
-    public HarPostDataBuilder setParams(List<HarParams> params) {
+    public HarPostDataBuilder withParams(List<HarParams> params) {
         this.params = params;
         return this;
     }
 
-    public HarPostDataBuilder setText(String text) {
+    public HarPostDataBuilder withText(String text) {
         this.text = text;
         return this;
     }
 
-    public HarPostDataBuilder setComment(String comment) {
+    public HarPostDataBuilder withComment(String comment) {
         this.comment = comment;
         return this;
     }
 
-    public HarPostData createHarPostData() {
+    public HarPostData build() {
         return new HarPostData(mimeType, params, text, comment);
     }
 }

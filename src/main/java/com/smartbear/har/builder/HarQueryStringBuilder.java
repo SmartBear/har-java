@@ -7,22 +7,22 @@ public class HarQueryStringBuilder {
     private String value;
     private String comment;
 
-    public HarQueryStringBuilder setName(String name) {
+    public HarQueryStringBuilder withName(String name) {
         this.name = name;
         return this;
     }
 
-    public HarQueryStringBuilder setValue(String value) {
+    public HarQueryStringBuilder withValue(String value) {
         this.value = value;
         return this;
     }
 
-    public HarQueryStringBuilder setComment(String comment) {
+    public HarQueryStringBuilder withComment(String comment) {
         this.comment = comment;
         return this;
     }
 
-    public HarQueryString createHarQueryString() {
+    public HarQueryString build() {
         return new HarQueryString(name, value, comment);
     }
 }
