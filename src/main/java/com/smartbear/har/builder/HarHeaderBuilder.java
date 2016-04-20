@@ -1,10 +1,14 @@
 package com.smartbear.har.builder;
 
 import com.smartbear.har.model.HarHeader;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HarHeaderBuilder {
     private String name;
-    private String value;
+    private List<String> values = new ArrayList<>();
     private String comment;
 
     public HarHeaderBuilder withName(String name) {
@@ -13,7 +17,14 @@ public class HarHeaderBuilder {
     }
 
     public HarHeaderBuilder withValue(String value) {
-        this.value = value;
+        this.values.add(value);
+        return this;
+    }
+
+    public HarHeaderBuilder withValues(List<String> values) {
+        if (values != null) {
+            this.values.addAll(values);
+        }
         return this;
     }
 
@@ -23,6 +34,6 @@ public class HarHeaderBuilder {
     }
 
     public HarHeader build() {
-        return new HarHeader(name, value, comment);
+        return new HarHeader(name, StringUtils.join(values, ","), comment);
     }
 }
