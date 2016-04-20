@@ -4,7 +4,7 @@ import com.smartbear.har.model.HarEntry;
 
 import java.io.IOException;
 
-public interface HarBuilder {
+public interface HarStreamWriter {
 
     void addEntry(HarEntry harEntry) throws IOException;
 

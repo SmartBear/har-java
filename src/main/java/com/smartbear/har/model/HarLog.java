@@ -3,7 +3,6 @@ package com.smartbear.har.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,15 +21,15 @@ import java.util.List;
 public class HarLog {
 
     @JsonProperty("version")
-    private String version;
+    private String version = "1.2";
     @JsonProperty("creator")
     private HarCreator creator;
     @JsonProperty("browser")
     private HarBrowser browser;
     @JsonProperty("pages")
-    private List<HarPage> pages = new ArrayList<HarPage>();
+    private List<HarPage> pages;
     @JsonProperty("entries")
-    private List<HarEntry> entries = new ArrayList<HarEntry>();
+    private List<HarEntry> entries;
     @JsonProperty("comment")
     private String comment;
 
