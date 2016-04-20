@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>ready-api</artifactId>
         <groupId>com.smartbear</groupId>
-        <version>1.8.0-SNAPSHOT</version>
+        <artifactId>ready-api</artifactId>
+        <version>1.7.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>ready-api-har</artifactId>
