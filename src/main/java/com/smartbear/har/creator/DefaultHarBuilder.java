@@ -5,17 +5,17 @@ import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.smartbear.har.model.HarEntry;
+import com.smartbear.har.model.HarLog;
 
 import java.io.File;
 import java.io.IOException;
 
-public class DefaultHarBuilder implements HarBuilder{
+public class DefaultHarBuilder implements HarBuilder {
 
     private final JsonFactory jfactory = new JsonFactory();
     private final JsonGenerator jGenerator;
 
-    public DefaultHarBuilder(String fileNameWithPath) throws IOException {
-        final File harFile = new File(fileNameWithPath);
+    public DefaultHarBuilder(File harFile, HarLog harLog) throws IOException {
         jGenerator = jfactory.createGenerator(harFile, JsonEncoding.UTF8);
 
         jGenerator.enable(JsonGenerator.Feature.AUTO_CLOSE_JSON_CONTENT);
@@ -24,15 +24,17 @@ public class DefaultHarBuilder implements HarBuilder{
         jGenerator.useDefaultPrettyPrinter();
 
         jGenerator.writeStartObject();
+        jGenerator.writeFieldName("log");
+        jGenerator.writeStartObject();
+        jGenerator.writeFieldName("comment");
+        jGenerator.writeObject(harLog.getComment());
         jGenerator.writeFieldName("entries");
         jGenerator.writeStartArray();
     }
 
     @Override
     public void addEntry(HarEntry harEntry) throws IOException {
-        jGenerator.writeStartObject();
         jGenerator.writeObject(harEntry);
-        jGenerator.writeEndObject();
         jGenerator.flush();
 
     }
