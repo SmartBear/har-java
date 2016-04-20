@@ -3,6 +3,7 @@ package com.smartbear.har.creator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.smartbear.har.builder.HarEntryBuilder;
 import com.smartbear.har.builder.HarLogBuilder;
+import com.smartbear.har.model.HarLog;
 import com.smartbear.har.model.HarLogRoot;
 import org.junit.After;
 import org.junit.Before;
@@ -21,7 +22,6 @@ public class DefaultHarBuilderTest {
     @Before
     public void setUp() throws Exception {
         tempHarFile = File.createTempFile("virt", ".har");
-        System.err.println("HAR file " + tempHarFile.getAbsolutePath());
         harBuilder = new DefaultHarBuilder(tempHarFile, new HarLogBuilder().withComment("Test Har").build());
     }
 
@@ -36,9 +36,13 @@ public class DefaultHarBuilderTest {
         harBuilder.addEntry(new HarEntryBuilder().withComment("Another Test Entry").build());
         harBuilder.closeHar();
 
-        ObjectMapper mapper = new ObjectMapper();
-        HarLogRoot harLogRoot = mapper.readValue(tempHarFile, HarLogRoot.class);
+        HarLog harLog = getHarLog();
 
-        assertThat(harLogRoot.getLog().getEntries().size(), is(2));
+        assertThat(harLog.getEntries().size(), is(2));
+    }
+
+    private HarLog getHarLog() throws java.io.IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        return mapper.readValue(tempHarFile, HarLogRoot.class).getLog();
     }
 }
