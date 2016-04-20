@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "contentType",
         "comment"
 })
-public class HarParams {
+public class HarParam {
 
     @JsonProperty("name")
     private String name;
@@ -28,7 +28,7 @@ public class HarParams {
     @JsonProperty("comment")
     private String comment;
 
-    public HarParams(String name, String value, String fileName, String contentType, String comment) {
+    public HarParam(String name, String value, String fileName, String contentType, String comment) {
         this.name = name;
         this.value = value;
         this.fileName = fileName;
@@ -89,7 +89,7 @@ public class HarParams {
     @Override
     public String toString()
     {
-        return "HarParams [name = "+name+", fileName = "+fileName+", value = "+value+", contentType = "+contentType+", comment = "+comment+"]";
+        return "HarParam [name = "+name+", fileName = "+fileName+", value = "+value+", contentType = "+contentType+", comment = "+comment+"]";
     }
 }
 

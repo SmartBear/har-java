@@ -21,13 +21,13 @@ public class HarPostData {
     @JsonProperty("mimeType")
     private String mimeType;
     @JsonProperty("params")
-    private List<HarParams> params = new ArrayList<HarParams>();
+    private List<HarParam> params = new ArrayList<>();
     @JsonProperty("text")
     private String text;
     @JsonProperty("comment")
     private String comment;
 
-    public HarPostData(String mimeType, List<HarParams> params, String text, String comment) {
+    public HarPostData(String mimeType, List<HarParam> params, String text, String comment) {
         this.mimeType = mimeType;
         this.params = params;
         this.text = text;
@@ -44,12 +44,12 @@ public class HarPostData {
         this.text = text;
     }
 
-    public List<HarParams> getParams ()
+    public List<HarParam> getParams ()
     {
         return params;
     }
 
-    public void setParams (List<HarParams> params)
+    public void setParams (List<HarParam> params)
     {
         this.params = params;
     }

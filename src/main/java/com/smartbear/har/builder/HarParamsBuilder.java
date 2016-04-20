@@ -1,6 +1,6 @@
 package com.smartbear.har.builder;
 
-import com.smartbear.har.model.HarParams;
+import com.smartbear.har.model.HarParam;
 
 public class HarParamsBuilder {
     private String name;
@@ -34,7 +34,7 @@ public class HarParamsBuilder {
         return this;
     }
 
-    public HarParams build() {
-        return new HarParams(name, value, fileName, contentType, comment);
+    public HarParam build() {
+        return new HarParam(name, value, fileName, contentType, comment);
     }
 }

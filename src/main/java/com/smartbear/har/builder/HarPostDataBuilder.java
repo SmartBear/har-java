@@ -1,13 +1,14 @@
 package com.smartbear.har.builder;
 
-import com.smartbear.har.model.HarParams;
+import com.smartbear.har.model.HarParam;
 import com.smartbear.har.model.HarPostData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HarPostDataBuilder {
     private String mimeType;
-    private List<HarParams> params;
+    private List<HarParam> params = new ArrayList<>();
     private String text;
     private String comment;
 
@@ -16,8 +17,13 @@ public class HarPostDataBuilder {
         return this;
     }
 
-    public HarPostDataBuilder withParams(List<HarParams> params) {
-        this.params = params;
+    public HarPostDataBuilder withParams(List<HarParam> params) {
+        this.params.addAll(params);
+        return this;
+    }
+
+    public HarPostDataBuilder addParam(HarParam param) {
+        this.params.add(param);
         return this;
     }
 
