@@ -34,6 +34,9 @@ public class HarLog {
     @JsonProperty("comment")
     private String comment;
 
+    protected HarLog() {
+    }
+
     public HarLog(String version, HarCreator creator, HarBrowser browser, List<HarPage> pages, List<HarEntry> entries, String comment) {
         this.version = version;
         this.creator = creator;
