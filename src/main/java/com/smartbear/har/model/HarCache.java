@@ -1,5 +1,6 @@
 package com.smartbear.har.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -15,14 +16,13 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 })
 public class HarCache {
 
-    @JsonProperty("beforeRequest")
     private HarCacheRequest beforeRequest;
-    @JsonProperty("afterRequest")
     private HarCacheRequest afterRequest;
-    @JsonProperty("comment")
     private String comment;
 
-    public HarCache(HarCacheRequest beforeRequest, HarCacheRequest afterRequest, String comment) {
+    @JsonCreator
+    public HarCache(@JsonProperty("beforeRequest") HarCacheRequest beforeRequest,
+                    @JsonProperty("afterRequest") HarCacheRequest afterRequest, @JsonProperty("comment") String comment) {
         this.beforeRequest = beforeRequest;
         this.afterRequest = afterRequest;
         this.comment = comment;
@@ -32,24 +32,12 @@ public class HarCache {
         return beforeRequest;
     }
 
-    public void setBeforeRequest(HarCacheRequest beforeRequest) {
-        this.beforeRequest = beforeRequest;
-    }
-
     public HarCacheRequest getAfterRequest() {
         return afterRequest;
     }
 
-    public void setAfterRequest(HarCacheRequest afterRequest) {
-        this.afterRequest = afterRequest;
-    }
-
     public String getComment() {
         return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
     }
 
     @Override

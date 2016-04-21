@@ -1,5 +1,6 @@
 package com.smartbear.har.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -17,18 +18,16 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 })
 public class HarContent {
 
-    @JsonProperty("size")
     private Long size;
-    @JsonProperty("compression")
     private Long compression;
-    @JsonProperty("mimeType")
     private String mimeType;
-    @JsonProperty("text")
     private String text;
-    @JsonProperty("comment")
     private String comment;
 
-    public HarContent(Long size, Long compression, String mimeType, String text, String comment) {
+    @JsonCreator
+    public HarContent(@JsonProperty("size") Long size, @JsonProperty("compression") Long compression,
+                      @JsonProperty("mimeType") String mimeType, @JsonProperty("text") String text,
+                      @JsonProperty("comment") String comment) {
         this.size = size;
         this.compression = compression;
         this.mimeType = mimeType;
@@ -36,60 +35,29 @@ public class HarContent {
         this.comment = comment;
     }
 
-    public String getText ()
-    {
+    public String getText() {
         return text;
     }
 
-    public void setText (String text)
-    {
-        this.text = text;
-    }
-
-    public String getComment ()
-    {
+    public String getComment() {
         return comment;
     }
 
-    public void setComment (String comment)
-    {
-        this.comment = comment;
-    }
-
-    public Long getCompression ()
-    {
+    public Long getCompression() {
         return compression;
     }
 
-    public void setCompression (Long compression)
-    {
-        this.compression = compression;
-    }
-
-    public String getMimeType ()
-    {
+    public String getMimeType() {
         return mimeType;
     }
 
-    public void setMimeType (String mimeType)
-    {
-        this.mimeType = mimeType;
-    }
-
-    public Long getSize ()
-    {
+    public Long getSize() {
         return size;
     }
 
-    public void setSize (Long size)
-    {
-        this.size = size;
-    }
-
     @Override
-    public String toString()
-    {
-        return "HarContent [text = "+text+", comment = "+comment+", compression = "+compression+", mimeType = "+mimeType+", size = "+size+"]";
+    public String toString() {
+        return "HarContent [text = " + text + ", comment = " + comment + ", compression = " + compression + ", mimeType = " + mimeType + ", size = " + size + "]";
     }
 }
 

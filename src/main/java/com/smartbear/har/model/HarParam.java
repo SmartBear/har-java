@@ -1,5 +1,6 @@
 package com.smartbear.har.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -16,19 +17,17 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "comment"
 })
 public class HarParam {
-
-    @JsonProperty("name")
     private String name;
-    @JsonProperty("value")
     private String value;
-    @JsonProperty("fileName")
     private String fileName;
-    @JsonProperty("contentType")
     private String contentType;
-    @JsonProperty("comment")
     private String comment;
 
-    public HarParam(String name, String value, String fileName, String contentType, String comment) {
+    @JsonCreator
+    public HarParam(@JsonProperty("name") String name, @JsonProperty("value") String value,
+                    @JsonProperty("fileName") String fileName,
+                    @JsonProperty("contentType") String contentType,
+                    @JsonProperty("comment") String comment) {
         this.name = name;
         this.value = value;
         this.fileName = fileName;
@@ -36,60 +35,29 @@ public class HarParam {
         this.comment = comment;
     }
 
-    public String getName ()
-    {
+    public String getName() {
         return name;
     }
 
-    public void setName (String name)
-    {
-        this.name = name;
-    }
-
-    public String getFileName ()
-    {
+    public String getFileName() {
         return fileName;
     }
 
-    public void setFileName (String fileName)
-    {
-        this.fileName = fileName;
-    }
-
-    public String getValue ()
-    {
+    public String getValue() {
         return value;
     }
 
-    public void setValue (String value)
-    {
-        this.value = value;
-    }
-
-    public String getContentType ()
-    {
+    public String getContentType() {
         return contentType;
     }
 
-    public void setContentType (String contentType)
-    {
-        this.contentType = contentType;
-    }
-
-    public String getComment ()
-    {
+    public String getComment() {
         return comment;
     }
 
-    public void setComment (String comment)
-    {
-        this.comment = comment;
-    }
-
     @Override
-    public String toString()
-    {
-        return "HarParam [name = "+name+", fileName = "+fileName+", value = "+value+", contentType = "+contentType+", comment = "+comment+"]";
+    public String toString() {
+        return "HarParam [name = " + name + ", fileName = " + fileName + ", value = " + value + ", contentType = " + contentType + ", comment = " + comment + "]";
     }
 }
 

@@ -1,5 +1,6 @@
 package com.smartbear.har.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -18,66 +19,42 @@ import java.util.List;
         "comment"
 })
 public class HarPostData {
-    @JsonProperty("mimeType")
+
     private String mimeType;
-    @JsonProperty("params")
     private List<HarParam> params = new ArrayList<>();
-    @JsonProperty("text")
     private String text;
-    @JsonProperty("comment")
     private String comment;
 
-    public HarPostData(String mimeType, List<HarParam> params, String text, String comment) {
+    @JsonCreator
+    public HarPostData(@JsonProperty("mimeType") String mimeType,
+                       @JsonProperty("params") List<HarParam> params,
+                       @JsonProperty("text") String text,
+                       @JsonProperty("comment") String comment) {
         this.mimeType = mimeType;
         this.params = params;
         this.text = text;
         this.comment = comment;
     }
 
-    public String getText ()
-    {
+    public String getText() {
         return text;
     }
 
-    public void setText (String text)
-    {
-        this.text = text;
-    }
-
-    public List<HarParam> getParams ()
-    {
+    public List<HarParam> getParams() {
         return params;
     }
 
-    public void setParams (List<HarParam> params)
-    {
-        this.params = params;
-    }
-
-    public String getComment ()
-    {
+    public String getComment() {
         return comment;
     }
 
-    public void setComment (String comment)
-    {
-        this.comment = comment;
-    }
-
-    public String getMimeType ()
-    {
+    public String getMimeType() {
         return mimeType;
     }
 
-    public void setMimeType (String mimeType)
-    {
-        this.mimeType = mimeType;
-    }
-
     @Override
-    public String toString()
-    {
-        return "HarPostData [text = "+text+", params = "+params+", comment = "+comment+", mimeType = "+mimeType+"]";
+    public String toString() {
+        return "HarPostData [text = " + text + ", params = " + params + ", comment = " + comment + ", mimeType = " + mimeType + "]";
     }
 }
 

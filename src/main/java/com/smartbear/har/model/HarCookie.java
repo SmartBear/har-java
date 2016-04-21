@@ -1,5 +1,6 @@
 package com.smartbear.har.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -20,24 +21,20 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 })
 public class HarCookie {
 
-    @JsonProperty("name")
     private String name;
-    @JsonProperty("value")
     private String value;
-    @JsonProperty("path")
     private String path;
-    @JsonProperty("domain")
     private String domain;
-    @JsonProperty("expires")
     private String expires;
-    @JsonProperty("httpOnly")
     private boolean httpOnly;
-    @JsonProperty("secure")
     private boolean secure;
-    @JsonProperty("comment")
     private String comment;
 
-    public HarCookie(String name, String value, String path, String domain, String expires, boolean httpOnly, boolean secure, String comment) {
+    @JsonCreator
+    public HarCookie(@JsonProperty("name") String name, @JsonProperty("value") String value,
+                     @JsonProperty("path") String path, @JsonProperty("domain") String domain,
+                     @JsonProperty("expires") String expires, @JsonProperty("httpOnly") boolean httpOnly,
+                     @JsonProperty("secure") boolean secure, @JsonProperty("comment") String comment) {
         this.name = name;
         this.value = value;
         this.path = path;
@@ -48,90 +45,41 @@ public class HarCookie {
         this.comment = comment;
     }
 
-    public String getExpires ()
-    {
+    public String getExpires() {
         return expires;
     }
 
-    public void setExpires (String expires)
-    {
-        this.expires = expires;
-    }
-
-    public String getName ()
-    {
+    public String getName() {
         return name;
     }
 
-    public void setName (String name)
-    {
-        this.name = name;
-    }
-
-    public boolean getSecure ()
-    {
+    public boolean getSecure() {
         return secure;
     }
 
-    public void setSecure (boolean secure)
-    {
-        this.secure = secure;
-    }
-
-    public String getDomain ()
-    {
+    public String getDomain() {
         return domain;
     }
 
-    public void setDomain (String domain)
-    {
-        this.domain = domain;
-    }
-
-    public String getPath ()
-    {
+    public String getPath() {
         return path;
     }
 
-    public void setPath (String path)
-    {
-        this.path = path;
-    }
-
-    public String getValue ()
-    {
+    public String getValue() {
         return value;
     }
 
-    public void setValue (String value)
-    {
-        this.value = value;
-    }
-
-    public boolean getHttpOnly ()
-    {
+    public boolean getHttpOnly() {
         return httpOnly;
     }
 
-    public void setHttpOnly (boolean httpOnly)
-    {
-        this.httpOnly = httpOnly;
-    }
-
-    public String getComment ()
-    {
+    public String getComment() {
         return comment;
     }
 
-    public void setComment (String comment)
-    {
-        this.comment = comment;
-    }
-
     @Override
-    public String toString()
-    {
-        return "HarCookie [expires = "+expires+", name = "+name+", secure = "+secure+", domain = "+domain+", path = "+path+", value = "+value+", httpOnly = "+httpOnly+", comment = "+comment+"]";
+    public String toString() {
+        return "HarCookie [expires = " + expires + ", name = " + name + ", secure = " + secure + ", domain = " + domain + ", path = " + path + ", value = " + value + ", httpOnly = " + httpOnly + ", comment = " + comment + "]";
     }
 }
 

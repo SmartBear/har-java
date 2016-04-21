@@ -1,5 +1,6 @@
 package com.smartbear.har.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -8,6 +9,7 @@ import java.util.List;
 
 /**
  * This object contains detailed info about the response.
+ *
  * @see <a href="http://www.softwareishard.com/blog/har-12-spec/#response">specification</a>
  */
 @JsonPropertyOrder({
@@ -24,28 +26,23 @@ import java.util.List;
 })
 public class HarResponse {
 
-    @JsonProperty("status")
     private int status;
-    @JsonProperty("statusText")
     private String statusText;
-    @JsonProperty("httpVersion")
     private String httpVersion;
-    @JsonProperty("cookies")
-    private List<HarCookie> cookies = new ArrayList<HarCookie>();
-    @JsonProperty("headers")
-    private List<HarHeader> headers = new ArrayList<HarHeader>();
-    @JsonProperty("content")
+    private List<HarCookie> cookies = new ArrayList<>();
+    private List<HarHeader> headers = new ArrayList<>();
     private HarContent content;
-    @JsonProperty("redirectURL")
     private String redirectURL;
-    @JsonProperty("headersSize")
     private Long headersSize;
-    @JsonProperty("bodySize")
     private Long bodySize;
-    @JsonProperty("comment")
     private String comment;
 
-    public HarResponse(int status, String statusText, String httpVersion, List<HarCookie> cookies, List<HarHeader> headers, HarContent content, String redirectURL, Long headersSize, Long bodySize, String comment) {
+    @JsonCreator
+    public HarResponse(@JsonProperty("status") int status, @JsonProperty("statusText") String statusText,
+                       @JsonProperty("httpVersion") String httpVersion, @JsonProperty("cookies") List<HarCookie> cookies,
+                       @JsonProperty("headers") List<HarHeader> headers, @JsonProperty("content") HarContent content,
+                       @JsonProperty("redirectURL") String redirectURL, @JsonProperty("headersSize") Long headersSize,
+                       @JsonProperty("bodySize") Long bodySize, @JsonProperty("comment") String comment) {
         this.status = status;
         this.statusText = statusText;
         this.httpVersion = httpVersion;
@@ -58,110 +55,49 @@ public class HarResponse {
         this.comment = comment;
     }
 
-    public HarContent getContent ()
-    {
+    public HarContent getContent() {
         return content;
     }
 
-    public void setContent (HarContent content)
-    {
-        this.content = content;
-    }
-
-    public List<HarHeader> getHeaders ()
-    {
+    public List<HarHeader> getHeaders() {
         return headers;
     }
 
-    public void setHeaders (List<HarHeader> headers)
-    {
-        this.headers = headers;
-    }
-
-    public Long getBodySize ()
-    {
+    public Long getBodySize() {
         return bodySize;
     }
 
-    public void setBodySize (Long bodySize)
-    {
-        this.bodySize = bodySize;
-    }
-
-    public String getHttpVersion ()
-    {
+    public String getHttpVersion() {
         return httpVersion;
     }
 
-    public void setHttpVersion (String httpVersion)
-    {
-        this.httpVersion = httpVersion;
-    }
-
-    public int getStatus ()
-    {
+    public int getStatus() {
         return status;
     }
 
-    public void setStatus (int status)
-    {
-        this.status = status;
-    }
-
-    public String getRedirectURL ()
-    {
+    public String getRedirectURL() {
         return redirectURL;
     }
 
-    public void setRedirectURL (String redirectURL)
-    {
-        this.redirectURL = redirectURL;
-    }
-
-    public String getStatusText ()
-    {
+    public String getStatusText() {
         return statusText;
     }
 
-    public void setStatusText (String statusText)
-    {
-        this.statusText = statusText;
-    }
-
-    public String getComment ()
-    {
+    public String getComment() {
         return comment;
     }
 
-    public void setComment (String comment)
-    {
-        this.comment = comment;
-    }
-
-    public List<HarCookie> getCookies ()
-    {
+    public List<HarCookie> getCookies() {
         return cookies;
     }
 
-    public void setCookies (List<HarCookie> cookies)
-    {
-        this.cookies = cookies;
-    }
-
-    public Long getHeadersSize ()
-    {
+    public Long getHeadersSize() {
         return headersSize;
     }
 
-    public void setHeadersSize (Long headersSize)
-    {
-        this.headersSize = headersSize;
-    }
-
     @Override
-    public String toString()
-    {
-        return "HarResponse [content = "+content+", headers = "+headers+", bodySize = "+bodySize+", httpVersion = "+httpVersion+", status = "+status+", redirectURL = "+redirectURL+", statusText = "+statusText+", comment = "+comment+", cookies = "+cookies+", headersSize = "+headersSize+"]";
+    public String toString() {
+        return "HarResponse [content = " + content + ", headers = " + headers + ", bodySize = " + bodySize + ", httpVersion = " + httpVersion + ", status = " + status + ", redirectURL = " + redirectURL + ", statusText = " + statusText + ", comment = " + comment + ", cookies = " + cookies + ", headersSize = " + headersSize + "]";
     }
 }
 

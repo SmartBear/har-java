@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HarLogBuilder {
-    private String version;
+    private String version = "1.2";
     private HarCreator creator;
     private HarBrowser browser;
     private List<HarPage> pages;

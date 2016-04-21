@@ -1,5 +1,6 @@
 package com.smartbear.har.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -22,32 +23,23 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 })
 public class HarEntry {
 
-    @JsonProperty("pageref")
     private String pageref;
-    @JsonProperty("startedDateTime")
     private String startedDateTime;
-    @JsonProperty("time")
     private long time;
-    @JsonProperty("request")
     private HarRequest request;
-    @JsonProperty("response")
     private HarResponse response;
-    @JsonProperty("cache")
     private HarCache cache;
-    @JsonProperty("timings")
     private HarTimings timings;
-    @JsonProperty("serverIPAddress")
     private String serverIPAddress;
-    @JsonProperty("connection")
     private String connection;
-    @JsonProperty("comment")
     private String comment;
 
-    protected HarEntry() {
-    }
-
-    public HarEntry(String pageref, String startedDateTime, long time, HarRequest request, HarResponse response, HarCache cache,
-                    HarTimings timings, String serverIPAddress, String connection, String comment) {
+    @JsonCreator
+    public HarEntry(@JsonProperty("pageref") String pageref, @JsonProperty("startedDateTime") String startedDateTime,
+                    @JsonProperty("time") long time, @JsonProperty("request") HarRequest request,
+                    @JsonProperty("response") HarResponse response, @JsonProperty("cache") HarCache cache,
+                    @JsonProperty("timings") HarTimings timings, @JsonProperty("serverIPAddress") String serverIPAddress,
+                    @JsonProperty("connection") String connection, @JsonProperty("comment") String comment) {
         this.pageref = pageref;
         this.startedDateTime = startedDateTime;
         this.time = time;
@@ -64,80 +56,40 @@ public class HarEntry {
         return pageref;
     }
 
-    public void setPageref(String pageref) {
-        this.pageref = pageref;
-    }
-
     public String getStartedDateTime() {
         return startedDateTime;
-    }
-
-    public void setStartedDateTime(String startedDateTime) {
-        this.startedDateTime = startedDateTime;
     }
 
     public long getTime() {
         return time;
     }
 
-    public void setTime(long time) {
-        this.time = time;
-    }
-
     public HarRequest getRequest() {
         return request;
-    }
-
-    public void setRequest(HarRequest request) {
-        this.request = request;
     }
 
     public HarResponse getResponse() {
         return response;
     }
 
-    public void setResponse(HarResponse response) {
-        this.response = response;
-    }
-
     public HarCache getCache() {
         return cache;
-    }
-
-    public void setCache(HarCache cache) {
-        this.cache = cache;
     }
 
     public HarTimings getTimings() {
         return timings;
     }
 
-    public void setTimings(HarTimings timings) {
-        this.timings = timings;
-    }
-
     public String getServerIPAddress() {
         return serverIPAddress;
-    }
-
-    public void setServerIPAddress(String serverIPAddress) {
-        this.serverIPAddress = serverIPAddress;
     }
 
     public String getConnection() {
         return connection;
     }
 
-    public void setConnection(String connection) {
-        this.connection = connection;
-    }
-
     public String getComment() {
         return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
     }
 
     @Override

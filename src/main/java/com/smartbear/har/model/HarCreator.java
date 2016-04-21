@@ -1,5 +1,6 @@
 package com.smartbear.har.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -15,14 +16,14 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "comment"
 })
 public class HarCreator {
-    @JsonProperty("name")
+
     private String name;
-    @JsonProperty("version")
     private String version;
-    @JsonProperty("comment")
     private String comment;
 
-    public HarCreator(String name, String comment, String version) {
+    @JsonCreator
+    public HarCreator(@JsonProperty("name") String name, @JsonProperty("version") String comment,
+                      @JsonProperty("comment") String version) {
         this.name = name;
         this.comment = comment;
         this.version = version;
@@ -32,24 +33,12 @@ public class HarCreator {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getComment() {
         return comment;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
     public String getVersion() {
         return version;
-    }
-
-    public void setVersion(String version) {
-        this.version = version;
     }
 
     @Override

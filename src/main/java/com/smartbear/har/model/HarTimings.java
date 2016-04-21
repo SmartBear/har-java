@@ -1,5 +1,6 @@
 package com.smartbear.har.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -19,25 +20,21 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "comment"
 })
 public class HarTimings {
-    
-    @JsonProperty("blocked")
+
     private Long blocked;
-    @JsonProperty("dns")
     private Long dns;
-    @JsonProperty("connect")
     private Long connect;
-    @JsonProperty("send")
     private Long send;
-    @JsonProperty("wait")
     private Long wait;
-    @JsonProperty("receive")
     private Long receive;
-    @JsonProperty("ssl")
     private Long ssl;
-    @JsonProperty("comment")
     private String comment;
 
-    public HarTimings(Long blocked, Long dns, Long connect, Long send, Long wait, Long receive, Long ssl, String comment) {
+    @JsonCreator
+    public HarTimings(@JsonProperty("blocked") Long blocked, @JsonProperty("dns") Long dns,
+                      @JsonProperty("connect") Long connect, @JsonProperty("send") Long send,
+                      @JsonProperty("wait") Long wait, @JsonProperty("receive") Long receive,
+                      @JsonProperty("ssl") Long ssl, @JsonProperty("comment") String comment) {
         this.blocked = blocked;
         this.dns = dns;
         this.connect = connect;
@@ -48,90 +45,41 @@ public class HarTimings {
         this.comment = comment;
     }
 
-    public Long getSend ()
-    {
+    public Long getSend() {
         return send;
     }
 
-    public void setSend (Long send)
-    {
-        this.send = send;
-    }
-
-    public Long getConnect ()
-    {
+    public Long getConnect() {
         return connect;
     }
 
-    public void setConnect (Long connect)
-    {
-        this.connect = connect;
-    }
-
-    public Long getDns ()
-    {
+    public Long getDns() {
         return dns;
     }
 
-    public void setDns (Long dns)
-    {
-        this.dns = dns;
-    }
-
-    public Long getSsl ()
-    {
+    public Long getSsl() {
         return ssl;
     }
 
-    public void setSsl (Long ssl)
-    {
-        this.ssl = ssl;
-    }
-
-    public Long getBlocked ()
-    {
+    public Long getBlocked() {
         return blocked;
     }
 
-    public void setBlocked (Long blocked)
-    {
-        this.blocked = blocked;
-    }
-
-    public Long getWait ()
-    {
+    public Long getWait() {
         return wait;
     }
 
-    public void setWait (Long wait)
-    {
-        this.wait = wait;
-    }
-
-    public String getComment ()
-    {
+    public String getComment() {
         return comment;
     }
 
-    public void setComment (String comment)
-    {
-        this.comment = comment;
-    }
-
-    public Long getReceive ()
-    {
+    public Long getReceive() {
         return receive;
     }
 
-    public void setReceive (Long receive)
-    {
-        this.receive = receive;
-    }
-
     @Override
-    public String toString()
-    {
-        return "HarTimings [send = "+send+", connect = "+connect+", dns = "+dns+", ssl = "+ssl+", blocked = "+blocked+", wait = "+wait+", comment = "+comment+", receive = "+receive+"]";
+    public String toString() {
+        return "HarTimings [send = " + send + ", connect = " + connect + ", dns = " + dns + ", ssl = " + ssl + ", blocked = " + blocked + ", wait = " + wait + ", comment = " + comment + ", receive = " + receive + "]";
     }
 }
 

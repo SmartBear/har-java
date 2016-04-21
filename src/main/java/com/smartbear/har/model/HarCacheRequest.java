@@ -1,5 +1,6 @@
 package com.smartbear.har.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
@@ -13,19 +14,16 @@ import java.util.Date;
         "comment"
 })
 public class HarCacheRequest {
-
-    @JsonProperty("expires")
     private Date expires;
-    @JsonProperty("lastAccess")
     private Date lastAccess;
-    @JsonProperty("eTag")
     private String eTag;
-    @JsonProperty("hitCount")
     private Long hitCount;
-    @JsonProperty("comment")
     private String comment;
 
-    public HarCacheRequest(Date expires, Date lastAccess, String eTag, Long hitCount, String comment) {
+    @JsonCreator
+    public HarCacheRequest(@JsonProperty("expires") Date expires, @JsonProperty("lastAccess") Date lastAccess,
+                           @JsonProperty("eTag") String eTag, @JsonProperty("hitCount") Long hitCount,
+                           @JsonProperty("comment") String comment) {
         this.expires = expires;
         this.lastAccess = lastAccess;
         this.eTag = eTag;
@@ -37,40 +35,20 @@ public class HarCacheRequest {
         return eTag;
     }
 
-    public void setETag(String eTag) {
-        this.eTag = eTag;
-    }
-
     public Date getExpires() {
         return expires;
-    }
-
-    public void setExpires(Date expires) {
-        this.expires = expires;
     }
 
     public Long getHitCount() {
         return hitCount;
     }
 
-    public void setHitCount(Long hitCount) {
-        this.hitCount = hitCount;
-    }
-
     public Date getLastAccess() {
         return lastAccess;
     }
 
-    public void setLastAccess(Date lastAccess) {
-        this.lastAccess = lastAccess;
-    }
-
     public String getComment() {
         return comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
     }
 
     @Override
