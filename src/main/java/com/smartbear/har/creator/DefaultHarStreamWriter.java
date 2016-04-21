@@ -16,14 +16,10 @@ import java.util.List;
 
 public class DefaultHarStreamWriter implements HarStreamWriter {
 
-    private final JsonFactory jfactory = new JsonFactory();
     private final JsonGenerator jGenerator;
 
     private DefaultHarStreamWriter(File harFile, String version, HarCreator creator, HarBrowser browser, List<HarPage> pages, String comment, boolean usePrettyPrint) throws IOException {
-        jGenerator = jfactory.createGenerator(harFile, JsonEncoding.UTF8);
-
-        jGenerator.enable(JsonGenerator.Feature.AUTO_CLOSE_JSON_CONTENT);
-        jGenerator.enable(JsonGenerator.Feature.AUTO_CLOSE_TARGET);
+        jGenerator = new JsonFactory().createGenerator(harFile, JsonEncoding.UTF8);
         jGenerator.setCodec(new ObjectMapper().setSerializationInclusion(JsonInclude.Include.NON_NULL));
         if (usePrettyPrint) {
             jGenerator.useDefaultPrettyPrinter();
@@ -50,7 +46,6 @@ public class DefaultHarStreamWriter implements HarStreamWriter {
     public void addEntry(HarEntry harEntry) throws IOException {
         jGenerator.writeObject(harEntry);
         jGenerator.flush();
-
     }
 
     public void closeHar() throws IOException {

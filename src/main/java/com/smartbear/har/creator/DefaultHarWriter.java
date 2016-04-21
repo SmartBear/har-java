@@ -12,11 +12,10 @@ import java.io.File;
 import java.io.IOException;
 
 public class DefaultHarWriter implements HarWriter {
-    private final JsonFactory jsonFactory = new JsonFactory();
 
     @Override
     public void writeHarLogToFile(HarLog harLog, File logFile) throws IOException {
-        JsonGenerator jsonGenerator = jsonFactory.createGenerator(logFile, JsonEncoding.UTF8);
+        JsonGenerator jsonGenerator = new JsonFactory().createGenerator(logFile, JsonEncoding.UTF8);
         try {
             ObjectMapper objectMapper = new ObjectMapper();
             objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
