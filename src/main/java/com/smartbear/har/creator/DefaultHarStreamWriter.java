@@ -16,42 +16,42 @@ import java.util.List;
 
 public class DefaultHarStreamWriter implements HarStreamWriter {
 
-    private final JsonGenerator jGenerator;
+    private final JsonGenerator jsonGenerator;
 
     private DefaultHarStreamWriter(File harFile, String version, HarCreator creator, HarBrowser browser, List<HarPage> pages, String comment, boolean usePrettyPrint) throws IOException {
-        jGenerator = new JsonFactory().createGenerator(harFile, JsonEncoding.UTF8);
-        jGenerator.setCodec(new ObjectMapper().setSerializationInclusion(JsonInclude.Include.NON_NULL));
+        jsonGenerator = new JsonFactory().createGenerator(harFile, JsonEncoding.UTF8);
+        jsonGenerator.setCodec(new ObjectMapper().setSerializationInclusion(JsonInclude.Include.NON_NULL));
         if (usePrettyPrint) {
-            jGenerator.useDefaultPrettyPrinter();
+            jsonGenerator.useDefaultPrettyPrinter();
         }
 
-        jGenerator.writeStartObject();
-        jGenerator.writeFieldName("log");
-        jGenerator.writeStartObject();
-        jGenerator.writeFieldName("comment");
-        jGenerator.writeObject(comment);
-        jGenerator.writeFieldName("browser");
-        jGenerator.writeObject(browser);
-        jGenerator.writeFieldName("pages");
-        jGenerator.writeObject(pages);
-        jGenerator.writeFieldName("creator");
-        jGenerator.writeObject(creator);
-        jGenerator.writeFieldName("version");
-        jGenerator.writeObject(version);
-        jGenerator.writeFieldName("entries");
-        jGenerator.writeStartArray();
+        jsonGenerator.writeStartObject();
+        jsonGenerator.writeFieldName("log");
+        jsonGenerator.writeStartObject();
+        jsonGenerator.writeFieldName("comment");
+        jsonGenerator.writeObject(comment);
+        jsonGenerator.writeFieldName("browser");
+        jsonGenerator.writeObject(browser);
+        jsonGenerator.writeFieldName("pages");
+        jsonGenerator.writeObject(pages);
+        jsonGenerator.writeFieldName("creator");
+        jsonGenerator.writeObject(creator);
+        jsonGenerator.writeFieldName("version");
+        jsonGenerator.writeObject(version);
+        jsonGenerator.writeFieldName("entries");
+        jsonGenerator.writeStartArray();
     }
 
     @Override
     public void addEntry(HarEntry harEntry) throws IOException {
-        jGenerator.writeObject(harEntry);
-        jGenerator.flush();
+        jsonGenerator.writeObject(harEntry);
+        jsonGenerator.flush();
     }
 
     public void closeHar() throws IOException {
-        jGenerator.writeEndArray();
-        jGenerator.writeEndObject();
-        jGenerator.close();
+        jsonGenerator.writeEndArray();
+        jsonGenerator.writeEndObject();
+        jsonGenerator.close();
     }
 
     public static class Builder {
@@ -88,7 +88,7 @@ public class DefaultHarStreamWriter implements HarStreamWriter {
             return this;
         }
 
-        public Builder withHarFile(File harFile) {
+        public Builder withOutputFile(File harFile) {
             this.harFile = harFile;
             return this;
         }

@@ -43,7 +43,7 @@ public class HarLogBuilder {
     }
 
     public HarLogBuilder addEntry(HarEntry entry) {
-        this.entries.add(entry);
+        entries.add(entry);
         return this;
     }
 
