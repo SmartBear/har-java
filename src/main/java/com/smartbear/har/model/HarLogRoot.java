@@ -2,19 +2,19 @@ package com.smartbear.har.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * For testing only
- *
- */
 public class HarLogRoot {
 
     @JsonProperty("log")
-    private HarLog log;
+    private HarLog harLog;
+
+    public HarLogRoot(HarLog harLog) {
+        this.harLog = harLog;
+    }
 
     protected HarLogRoot() {
     }
 
     public HarLog getLog() {
-        return log;
+        return harLog;
     }
 }

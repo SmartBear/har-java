@@ -1,11 +1,10 @@
 package com.smartbear.har.creator;
 
-import com.smartbear.har.model.HarEntry;
+import com.smartbear.har.model.HarLog;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 public interface HarWriter {
-
-    void writeEntries(List<HarEntry> harEnties) throws IOException;
+    void writeHarLogToFile(HarLog harLog, File logFile) throws IOException;
 }

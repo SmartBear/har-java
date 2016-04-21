@@ -6,6 +6,7 @@ import com.smartbear.har.model.HarEntry;
 import com.smartbear.har.model.HarLog;
 import com.smartbear.har.model.HarPage;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HarLogBuilder {
@@ -13,7 +14,7 @@ public class HarLogBuilder {
     private HarCreator creator;
     private HarBrowser browser;
     private List<HarPage> pages;
-    private List<HarEntry> entries;
+    private List<HarEntry> entries = new ArrayList<>();
     private String comment;
 
     public HarLogBuilder withVersion(String version) {
@@ -38,6 +39,11 @@ public class HarLogBuilder {
 
     public HarLogBuilder withEntries(List<HarEntry> entries) {
         this.entries = entries;
+        return this;
+    }
+
+    public HarLogBuilder addEntry(HarEntry entry) {
+        this.entries.add(entry);
         return this;
     }
 
