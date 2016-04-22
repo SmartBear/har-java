@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import java.util.List;
 
 /**
- * This object represents the root of exported data.
+ * This object represents the top log object according the HAR specification.
  *
  * @see <a href="http://www.softwareishard.com/blog/har-12-spec/#log">specification</a>
  */
