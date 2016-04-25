@@ -6,6 +6,9 @@ import com.smartbear.har.model.HarPostData;
 import com.smartbear.har.model.HarQueryString;
 import com.smartbear.har.model.HarRequest;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.ArrayList;
 import java.util.List;
 
 public class HarRequestBuilder {
@@ -52,6 +55,20 @@ public class HarRequestBuilder {
 
     public HarRequestBuilder withQueryString(List<HarQueryString> queryString) {
         this.queryString = queryString;
+        return this;
+    }
+
+    public HarRequestBuilder withQueryString(String queryString) throws UnsupportedEncodingException {
+        List<HarQueryString>  queryStrings = new ArrayList<>();
+
+        final String[] pairs = queryString.split("&");
+        for (String pair : pairs) {
+            final int idx = pair.indexOf("=");
+            final String key = idx > 0 ? URLDecoder.decode(pair.substring(0, idx), "UTF-8") : pair;
+            final String value = idx > 0 && pair.length() > idx + 1 ? URLDecoder.decode(pair.substring(idx + 1), "UTF-8") : "";
+            queryStrings.add(new HarQueryString(key, value, ""));
+        }
+        this.queryString = queryStrings;
         return this;
     }
 
