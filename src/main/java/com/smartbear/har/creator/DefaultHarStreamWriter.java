@@ -37,7 +37,7 @@ public class DefaultHarStreamWriter implements HarStreamWriter {
         jsonGenerator.writeFieldName("log");
         jsonGenerator.writeStartObject();
 
-        // Do not add optional fields if they are null
+        // Add optional fields if they are not null
         if(comment != null){
             jsonGenerator.writeFieldName("comment");
             jsonGenerator.writeObject(comment);
@@ -46,7 +46,7 @@ public class DefaultHarStreamWriter implements HarStreamWriter {
             jsonGenerator.writeFieldName("browser");
             jsonGenerator.writeObject(browser);
         }
-        if(browser != null){
+        if(pages != null){
             jsonGenerator.writeFieldName("pages");
             jsonGenerator.writeObject(pages);
         }
