@@ -8,14 +8,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class HarLogRoot {
 
-    private HarLog harLog;
+    private HarLog log;
 
     @JsonCreator
-    public HarLogRoot(@JsonProperty("log") HarLog harLog) {
-        this.harLog = harLog;
+    public HarLogRoot(@JsonProperty("log") HarLog log) {
+        this.log = log;
     }
 
     public HarLog getLog() {
-        return harLog;
+        return log;
     }
 }
