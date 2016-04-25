@@ -21,7 +21,7 @@ public class DefaultHarStreamWriter implements HarStreamWriter {
 
     private DefaultHarStreamWriter(File harFile, String version, HarCreator creator, HarBrowser browser, List<HarPage> pages, String comment, boolean usePrettyPrint) throws IOException {
         jsonGenerator = new JsonFactory().createGenerator(harFile, JsonEncoding.UTF8);
-        final ObjectMapper objectMapper = new ObjectMapper().setSerializationInclusion(JsonInclude.Include.NON_NULL).setSerializationInclusion(JsonInclude.Include.USE_DEFAULTS);
+        final ObjectMapper objectMapper = new ObjectMapper().setSerializationInclusion(JsonInclude.Include.NON_NULL);
         jsonGenerator.setCodec(objectMapper);
         if (usePrettyPrint) {
             jsonGenerator.useDefaultPrettyPrinter();
