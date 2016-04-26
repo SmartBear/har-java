@@ -59,14 +59,16 @@ public class HarRequestBuilder {
     }
 
     public HarRequestBuilder withQueryString(String queryString) throws UnsupportedEncodingException {
-        List<HarQueryString>  queryStrings = new ArrayList<>();
+        List<HarQueryString> queryStrings = new ArrayList<>();
 
-        final String[] pairs = queryString.split("&");
-        for (String pair : pairs) {
-            final int idx = pair.indexOf("=");
-            final String key = idx > 0 ? URLDecoder.decode(pair.substring(0, idx), "UTF-8") : pair;
-            final String value = idx > 0 && pair.length() > idx + 1 ? URLDecoder.decode(pair.substring(idx + 1), "UTF-8") : "";
-            queryStrings.add(new HarQueryString(key, value, ""));
+        final String[] parameters = queryString.split("&");
+        for (String parameter : parameters) {
+            final int idx = parameter.indexOf("=");
+            final String key = idx > 0 ? URLDecoder.decode(parameter.substring(0, idx), "UTF-8") : parameter;
+            final String value = idx > 0 && parameter.length() > idx + 1 ? URLDecoder.decode(parameter.substring(idx + 1), "UTF-8") : "";
+            if (!key.isEmpty()) {
+                queryStrings.add(new HarQueryString(key, value, ""));
+            }
         }
         this.queryString = queryStrings;
         return this;
