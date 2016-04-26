@@ -72,7 +72,7 @@ public class DefaultHarStreamWriter implements HarStreamWriter {
     public static class Builder {
         private File harFile;
         private String version = "1.2";
-        private HarCreator creator = new HarCreatorBuilder().withName("ReadyAPI").withVersion("1.0").build();
+        private HarCreator creator = new HarCreatorBuilder().withName("ReadyAPI").build();
         private HarBrowser browser;
         private List<HarPage> pages;
         private String comment;
