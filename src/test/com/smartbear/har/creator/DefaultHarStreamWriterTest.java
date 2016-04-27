@@ -21,7 +21,7 @@ public class DefaultHarStreamWriterTest {
     @Before
     public void setUp() throws Exception {
         tempHarFile = File.createTempFile("virt", ".har");
-        harBuilder = new DefaultHarStreamWriter.Builder().withHarFile(tempHarFile).withComment("Test Har").build();
+        harBuilder = new DefaultHarStreamWriter.Builder().withOutputFile(tempHarFile).withComment("Test Har").build();
     }
 
     @After

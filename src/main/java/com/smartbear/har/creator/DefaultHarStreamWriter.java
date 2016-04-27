@@ -5,6 +5,7 @@ import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.smartbear.har.builder.HarCreatorBuilder;
 import com.smartbear.har.model.HarBrowser;
 import com.smartbear.har.model.HarCreator;
 import com.smartbear.har.model.HarEntry;
@@ -20,26 +21,40 @@ public class DefaultHarStreamWriter implements HarStreamWriter {
 
     private DefaultHarStreamWriter(File harFile, String version, HarCreator creator, HarBrowser browser, List<HarPage> pages, String comment, boolean usePrettyPrint) throws IOException {
         jsonGenerator = new JsonFactory().createGenerator(harFile, JsonEncoding.UTF8);
-        jsonGenerator.setCodec(new ObjectMapper().setSerializationInclusion(JsonInclude.Include.NON_NULL));
+        final ObjectMapper objectMapper = new ObjectMapper().setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        jsonGenerator.setCodec(objectMapper);
         if (usePrettyPrint) {
             jsonGenerator.useDefaultPrettyPrinter();
         }
 
         jsonGenerator.writeStartObject();
+        writeHarLogFields(version, creator, browser, pages, comment);
+        jsonGenerator.writeFieldName("entries");
+        jsonGenerator.writeStartArray();
+    }
+
+    private void writeHarLogFields(String version, HarCreator creator, HarBrowser browser, List<HarPage> pages, String comment) throws IOException {
         jsonGenerator.writeFieldName("log");
         jsonGenerator.writeStartObject();
-        jsonGenerator.writeFieldName("comment");
-        jsonGenerator.writeObject(comment);
-        jsonGenerator.writeFieldName("browser");
-        jsonGenerator.writeObject(browser);
-        jsonGenerator.writeFieldName("pages");
-        jsonGenerator.writeObject(pages);
+
+        // Add optional fields if they are not null
+        if(comment != null){
+            jsonGenerator.writeFieldName("comment");
+            jsonGenerator.writeObject(comment);
+        }
+        if(browser != null){
+            jsonGenerator.writeFieldName("browser");
+            jsonGenerator.writeObject(browser);
+        }
+        if(pages != null){
+            jsonGenerator.writeFieldName("pages");
+            jsonGenerator.writeObject(pages);
+        }
+
         jsonGenerator.writeFieldName("creator");
         jsonGenerator.writeObject(creator);
         jsonGenerator.writeFieldName("version");
         jsonGenerator.writeObject(version);
-        jsonGenerator.writeFieldName("entries");
-        jsonGenerator.writeStartArray();
     }
 
     @Override
@@ -57,7 +72,7 @@ public class DefaultHarStreamWriter implements HarStreamWriter {
     public static class Builder {
         private File harFile;
         private String version = "1.2";
-        private HarCreator creator;
+        private HarCreator creator = new HarCreatorBuilder().withName("ReadyAPI").build();
         private HarBrowser browser;
         private List<HarPage> pages;
         private String comment;
