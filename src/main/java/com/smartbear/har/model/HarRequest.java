@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,9 +28,9 @@ public class HarRequest {
     private String method;
     private String url;
     private String httpVersion;
-    private List<HarCookie> cookies = new ArrayList<>();
-    private List<HarHeader> headers = new ArrayList<>();
-    private List<HarQueryString> queryString = new ArrayList<>();
+    private List<HarCookie> cookies;
+    private List<HarHeader> headers;
+    private List<HarQueryString> queryString;
     private HarPostData postData;
     private Long headersSize;
     private Long bodySize;

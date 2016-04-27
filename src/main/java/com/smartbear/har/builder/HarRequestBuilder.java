@@ -16,9 +16,9 @@ public class HarRequestBuilder {
     private String method;
     private String url;
     private String httpVersion;
-    private List<HarCookie> cookies;
-    private List<HarHeader> headers;
-    private List<HarQueryString> queryString;
+    private List<HarCookie> cookies = new ArrayList<>();
+    private List<HarHeader> headers = new ArrayList<>();
+    private List<HarQueryString> queryString = new ArrayList<>();
     private HarPostData postData;
     private Long bodySize;
     private String comment;
