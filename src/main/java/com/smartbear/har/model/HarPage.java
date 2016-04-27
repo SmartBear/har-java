@@ -4,8 +4,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import java.util.Date;
-
 @JsonPropertyOrder({
         "startedDateTime",
         "id",
@@ -15,14 +13,14 @@ import java.util.Date;
 })
 public class HarPage {
 
-    private Date startedDateTime;
+    private String startedDateTime;
     private String id;
     private String title;
     private HarPageTimings pageTimings;
     private String comment;
 
     @JsonCreator
-    public HarPage(@JsonProperty("startedDateTime") Date startedDateTime, @JsonProperty("id") String id,
+    public HarPage(@JsonProperty("startedDateTime") String startedDateTime, @JsonProperty("id") String id,
                    @JsonProperty("title") String title, @JsonProperty("pageTimings") HarPageTimings pageTimings,
                    @JsonProperty("comment") String comment) {
         this.startedDateTime = startedDateTime;
@@ -32,7 +30,7 @@ public class HarPage {
         this.comment = comment;
     }
 
-    public Date getStartedDateTime() {
+    public String getStartedDateTime() {
         return startedDateTime;
     }
 

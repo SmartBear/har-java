@@ -6,6 +6,10 @@ import com.smartbear.har.model.HarRequest;
 import com.smartbear.har.model.HarResponse;
 import com.smartbear.har.model.HarTimings;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class HarEntryBuilder {
     private String pageref;
     private String startedDateTime;
@@ -25,6 +29,12 @@ public class HarEntryBuilder {
 
     public HarEntryBuilder withStartedDateTime(String startedDateTime) {
         this.startedDateTime = startedDateTime;
+        return this;
+    }
+
+    public HarEntryBuilder withStartedDateTime(Date startedDateTime) {
+        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        this.startedDateTime = dateFormat.format(startedDateTime);
         return this;
     }
 
