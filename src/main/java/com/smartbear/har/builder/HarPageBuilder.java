@@ -1,10 +1,9 @@
 package com.smartbear.har.builder;
 
+import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
 import com.smartbear.har.model.HarPage;
 import com.smartbear.har.model.HarPageTimings;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class HarPageBuilder {
@@ -15,8 +14,7 @@ public class HarPageBuilder {
     private String comment;
 
     public HarPageBuilder withStartedDateTime(Date startedDateTime) {
-        DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
-        this.startedDateTime = dateFormat.format(startedDateTime);
+        this.startedDateTime = new ISO8601DateFormat().format(startedDateTime);
         return this;
     }
 
