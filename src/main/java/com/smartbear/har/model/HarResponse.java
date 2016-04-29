@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,8 +28,8 @@ public class HarResponse {
     private int status;
     private String statusText;
     private String httpVersion;
-    private List<HarCookie> cookies = new ArrayList<>();
-    private List<HarHeader> headers = new ArrayList<>();
+    private List<HarCookie> cookies;
+    private List<HarHeader> headers;
     private HarContent content;
     private String redirectURL;
     private Long headersSize;

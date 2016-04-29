@@ -12,15 +12,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class HarRequestBuilder {
-    private Long headersSize;
+    private Long headersSize = -1L;
     private String method;
     private String url;
     private String httpVersion;
-    private List<HarCookie> cookies;
-    private List<HarHeader> headers;
-    private List<HarQueryString> queryString;
+    private List<HarCookie> cookies = new ArrayList<>();
+    private List<HarHeader> headers = new ArrayList<>();
+    private List<HarQueryString> queryString = new ArrayList<>();
     private HarPostData postData;
-    private Long bodySize;
+    private Long bodySize = -1L;
     private String comment;
 
     public HarRequestBuilder withHeadersSize(Long headersSize) {

@@ -5,14 +5,15 @@ import com.smartbear.har.model.HarCookie;
 import com.smartbear.har.model.HarHeader;
 import com.smartbear.har.model.HarResponse;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HarResponseBuilder {
     private int status;
     private String statusText;
     private String httpVersion;
-    private List<HarCookie> cookies;
-    private List<HarHeader> headers;
+    private List<HarCookie> cookies = new ArrayList<>();
+    private List<HarHeader> headers = new ArrayList<>();
     private HarContent content;
     private String redirectURL;
     private Long headersSize;

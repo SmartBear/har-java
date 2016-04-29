@@ -5,7 +5,6 @@ import com.fasterxml.jackson.core.JsonEncoding;
 import com.fasterxml.jackson.core.JsonFactory;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.smartbear.har.builder.HarCreatorBuilder;
 import com.smartbear.har.model.HarBrowser;
 import com.smartbear.har.model.HarCreator;
 import com.smartbear.har.model.HarEntry;
@@ -13,6 +12,7 @@ import com.smartbear.har.model.HarPage;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class DefaultHarStreamWriter implements HarStreamWriter {
@@ -72,7 +72,7 @@ public class DefaultHarStreamWriter implements HarStreamWriter {
     public static class Builder {
         private File harFile;
         private String version = "1.2";
-        private HarCreator creator = new HarCreatorBuilder().withName("ReadyAPI").build();
+        private HarCreator creator;
         private HarBrowser browser;
         private List<HarPage> pages;
         private String comment;
@@ -95,6 +95,14 @@ public class DefaultHarStreamWriter implements HarStreamWriter {
 
         public Builder withPages(List<HarPage> pages) {
             this.pages = pages;
+            return this;
+        }
+
+        public Builder addPage(HarPage page) {
+            if(pages == null){
+                pages = new ArrayList<>();
+            }
+            pages.add(page);
             return this;
         }
 

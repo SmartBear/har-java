@@ -1,10 +1,13 @@
 package com.smartbear.har.builder;
 
+import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
 import com.smartbear.har.model.HarCache;
 import com.smartbear.har.model.HarEntry;
 import com.smartbear.har.model.HarRequest;
 import com.smartbear.har.model.HarResponse;
 import com.smartbear.har.model.HarTimings;
+
+import java.util.Date;
 
 public class HarEntryBuilder {
     private String pageref;
@@ -25,6 +28,11 @@ public class HarEntryBuilder {
 
     public HarEntryBuilder withStartedDateTime(String startedDateTime) {
         this.startedDateTime = startedDateTime;
+        return this;
+    }
+
+    public HarEntryBuilder withStartedDateTime(Date startedDateTime) {
+        this.startedDateTime = new ISO8601DateFormat().format(startedDateTime);
         return this;
     }
 

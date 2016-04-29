@@ -3,8 +3,8 @@ package com.smartbear.har.builder;
 import com.smartbear.har.model.HarPageTimings;
 
 public class HarPageTimingsBuilder {
-    private long onContentLoad;
-    private long onLoad;
+    private long onContentLoad = -1L;
+    private long onLoad = -1L;
     private String comment;
 
     public HarPageTimingsBuilder withOnContentLoad(long onContentLoad) {
