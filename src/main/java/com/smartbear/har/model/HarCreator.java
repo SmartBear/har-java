@@ -22,8 +22,8 @@ public class HarCreator {
     private String comment;
 
     @JsonCreator
-    public HarCreator(@JsonProperty("name") String name, @JsonProperty("version") String comment,
-                      @JsonProperty("comment") String version) {
+    public HarCreator(@JsonProperty("name") String name, @JsonProperty("comment") String comment,
+                      @JsonProperty("version") String version) {
         this.name = name;
         this.comment = comment;
         this.version = version;
