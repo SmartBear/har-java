@@ -4,7 +4,7 @@
 
     <groupId>com.smartbear</groupId>
     <artifactId>har-java</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
 
     <name>Ready! API HAR library</name>
     <description>Contains HAR models and writers</description>
@@ -32,7 +32,7 @@
         <connection>scm:git:ssh://git@github.com/SmartBear/har-java.git</connection>
         <developerConnection>scm:git:ssh://git@github.com/SmartBear/har-java.git
         </developerConnection>
-        <tag>v1.0.0</tag>
+        <tag>master</tag>
     </scm>
 
     <issueManagement>
