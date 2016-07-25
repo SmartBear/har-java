@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
-  * This object contains list of all parameters & values parsed from a query string, if any (embedded in request object).
+  * This object contains list of all parameters and values parsed from a query string, if any (embedded in request object).
   * @see <a href="http://www.softwareishard.com/blog/har-12-spec/#queryString">specification</a>
   */
 @JsonPropertyOrder({
