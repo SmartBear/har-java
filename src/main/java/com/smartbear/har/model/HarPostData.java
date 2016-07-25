@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This object describes posted data, if any (embedded in <request> object).
+ * This object describes posted data, if any (embedded in request object).
  *
  * @see <a href="http://www.softwareishard.com/blog/har-12-spec/#postData">specification</a>
  */

@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
- * Cookie used in <request> and <response> objects.
+ * Cookie used in request and response objects.
  *
  * @see <a href="http://www.softwareishard.com/blog/har-12-spec/#cookies">specification</a>
  */

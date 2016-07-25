@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
- * This object describes details about response content (embedded in <response> object).
+ * This object describes details about response content (embedded in response object).
  *
  * @see <a href="http://www.softwareishard.com/blog/har-12-spec/#content">specification</a>
  */

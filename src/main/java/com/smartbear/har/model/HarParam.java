@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
- * Posted parameters, if any (embedded in <postData> object).
+ * Posted parameters, if any (embedded in postData object).
  *
  * @see <a href="http://www.softwareishard.com/blog/har-12-spec/#params">specification</a>
  */
