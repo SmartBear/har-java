@@ -49,7 +49,7 @@
     </licenses>
 
     <properties>
-        <jackson.version>2.12.2</jackson.version>
+        <jackson.version>2.13.0</jackson.version>
     </properties>
 
     <build>
