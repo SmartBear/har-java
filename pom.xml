@@ -10,9 +10,13 @@
     <description>Contains HAR models and writers</description>
     <packaging>jar</packaging>
 
-    <url>https://github.com/SmartBear/har-java</url>
+    <url>https://github.com/speakeasy-api/har-java</url>
 
     <developers>
+        <developer>
+            <name>Alexa Drake</name>
+            <id>alexadrake</id>
+        </developer>
         <developer>
             <name>Shadid Chowdhury</name>
             <id>shadidchowdhury</id>
@@ -28,16 +32,15 @@
     </developers>
 
     <scm>
-        <url>https://github.com/SmartBear/har-java</url>
-        <connection>scm:git:ssh://git@github.com/SmartBear/har-java.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/SmartBear/har-java.git
-        </developerConnection>
-        <tag>master</tag>
+        <url>https://github.com/speakeasy-api/har-java</url>
+        <connection>scm:git:https://github.com/speakeasy-api/har-java</connection>
+        <developerConnection>scm:git:https://github.com/speakeasy-api/har-java.git</developerConnection>
+        <tag>main</tag>
     </scm>
 
     <issueManagement>
         <system>github</system>
-        <url>https://github.com/SmartBear/har-java/issues</url>
+        <url>https://github.com/speakeasy-api/har-java/issues</url>
     </issueManagement>
 
     <licenses>

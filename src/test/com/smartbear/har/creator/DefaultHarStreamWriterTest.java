@@ -9,6 +9,8 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -17,16 +19,19 @@ public class DefaultHarStreamWriterTest {
 
     private File tempHarFile;
     private HarStreamWriter harBuilder;
+    private OutputStream outputStream;
 
     @Before
     public void setUp() throws Exception {
         tempHarFile = File.createTempFile("virt", ".har");
-        harBuilder = new DefaultHarStreamWriter.Builder().withOutputFile(tempHarFile).withComment("Test Har").build();
+        outputStream = new FileOutputStream(tempHarFile);
+        harBuilder = new DefaultHarStreamWriter.Builder().withOutputStream(outputStream).withComment("Test Har").build();
     }
 
     @After
     public void tearDown() throws Exception {
         tempHarFile.deleteOnExit();
+        outputStream.close();
     }
 
     @Test

@@ -12,6 +12,7 @@ import com.smartbear.har.model.HarPage;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,8 +20,8 @@ public class DefaultHarStreamWriter implements HarStreamWriter {
 
     private final JsonGenerator jsonGenerator;
 
-    private DefaultHarStreamWriter(File harFile, String version, HarCreator creator, HarBrowser browser, List<HarPage> pages, String comment, boolean usePrettyPrint) throws IOException {
-        jsonGenerator = new JsonFactory().createGenerator(harFile, JsonEncoding.UTF8);
+    private DefaultHarStreamWriter(OutputStream outputStream, String version, HarCreator creator, HarBrowser browser, List<HarPage> pages, String comment, boolean usePrettyPrint) throws IOException {
+        jsonGenerator = new JsonFactory().createGenerator(outputStream, JsonEncoding.UTF8);
         final ObjectMapper objectMapper = new ObjectMapper().setSerializationInclusion(JsonInclude.Include.NON_NULL);
         jsonGenerator.setCodec(objectMapper);
         if (usePrettyPrint) {
@@ -70,7 +71,7 @@ public class DefaultHarStreamWriter implements HarStreamWriter {
     }
 
     public static class Builder {
-        private File harFile;
+        private OutputStream outputStream;
         private String version = "1.2";
         private HarCreator creator;
         private HarBrowser browser;
@@ -111,8 +112,8 @@ public class DefaultHarStreamWriter implements HarStreamWriter {
             return this;
         }
 
-        public Builder withOutputFile(File harFile) {
-            this.harFile = harFile;
+        public Builder withOutputStream(OutputStream outputStream) {
+            this.outputStream = outputStream;
             return this;
         }
 
@@ -124,7 +125,7 @@ public class DefaultHarStreamWriter implements HarStreamWriter {
 
         public DefaultHarStreamWriter build() throws IOException {
 
-            return new DefaultHarStreamWriter(harFile, version, creator, browser, pages, comment, usePrettyPrint);
+            return new DefaultHarStreamWriter(outputStream, version, creator, browser, pages, comment, usePrettyPrint);
         }
     }
 }
