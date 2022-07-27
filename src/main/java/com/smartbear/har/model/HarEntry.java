@@ -1,13 +1,16 @@
 package com.smartbear.har.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * This object represents an array with all exported HTTP requests.
  *
- * @see <a href="http://www.softwareishard.com/blog/har-12-spec/#entries">specification</a>
+ * @see <a href=
+ *      "http://www.softwareishard.com/blog/har-12-spec/#entries">specification</a>
  */
 @JsonPropertyOrder({
         "pageref",
@@ -36,10 +39,12 @@ public class HarEntry {
 
     @JsonCreator
     public HarEntry(@JsonProperty("pageref") String pageref, @JsonProperty("startedDateTime") String startedDateTime,
-                    @JsonProperty("time") long time, @JsonProperty("request") HarRequest request,
-                    @JsonProperty("response") HarResponse response, @JsonProperty("cache") HarCache cache,
-                    @JsonProperty("timings") HarTimings timings, @JsonProperty("serverIPAddress") String serverIPAddress,
-                    @JsonProperty("connection") String connection, @JsonProperty("comment") String comment) {
+            @JsonProperty("time") long time, @JsonProperty("request") HarRequest request,
+            @JsonProperty("response") HarResponse response,
+            @JsonProperty("cache") @JsonInclude(Include.ALWAYS) HarCache cache,
+            @JsonProperty("timings") @JsonInclude(Include.ALWAYS) HarTimings timings,
+            @JsonProperty("serverIPAddress") String serverIPAddress,
+            @JsonProperty("connection") String connection, @JsonProperty("comment") String comment) {
         this.pageref = pageref;
         this.startedDateTime = startedDateTime;
         this.time = time;
@@ -94,6 +99,8 @@ public class HarEntry {
 
     @Override
     public String toString() {
-        return "HarEntry [response = " + response + ", connection = " + connection + ", time = " + time + ", pageref = " + pageref + ", cache = " + cache + ", timings = " + timings + ", request = " + request + ", comment = " + comment + ", serverIPAddress = " + serverIPAddress + ", startedDateTime = " + startedDateTime + "]";
+        return "HarEntry [response = " + response + ", connection = " + connection + ", time = " + time + ", pageref = "
+                + pageref + ", cache = " + cache + ", timings = " + timings + ", request = " + request + ", comment = "
+                + comment + ", serverIPAddress = " + serverIPAddress + ", startedDateTime = " + startedDateTime + "]";
     }
 }

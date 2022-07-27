@@ -1,13 +1,16 @@
 package com.smartbear.har.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
  * Cookie used in request and response objects.
  *
- * @see <a href="http://www.softwareishard.com/blog/har-12-spec/#cookies">specification</a>
+ * @see <a href=
+ *      "http://www.softwareishard.com/blog/har-12-spec/#cookies">specification</a>
  */
 @JsonPropertyOrder({
         "name",
@@ -19,6 +22,8 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
         "secure",
         "comment"
 })
+
+@JsonInclude(Include.NON_DEFAULT)
 public class HarCookie {
 
     private String name;
@@ -32,9 +37,9 @@ public class HarCookie {
 
     @JsonCreator
     public HarCookie(@JsonProperty("name") String name, @JsonProperty("value") String value,
-                     @JsonProperty("path") String path, @JsonProperty("domain") String domain,
-                     @JsonProperty("expires") String expires, @JsonProperty("httpOnly") boolean httpOnly,
-                     @JsonProperty("secure") boolean secure, @JsonProperty("comment") String comment) {
+            @JsonProperty("path") String path, @JsonProperty("domain") String domain,
+            @JsonProperty("expires") String expires, @JsonProperty("httpOnly") boolean httpOnly,
+            @JsonProperty("secure") boolean secure, @JsonProperty("comment") String comment) {
         this.name = name;
         this.value = value;
         this.path = path;
@@ -79,7 +84,8 @@ public class HarCookie {
 
     @Override
     public String toString() {
-        return "HarCookie [expires = " + expires + ", name = " + name + ", secure = " + secure + ", domain = " + domain + ", path = " + path + ", value = " + value + ", httpOnly = " + httpOnly + ", comment = " + comment + "]";
+        return "HarCookie [expires = " + expires + ", name = " + name + ", secure = " + secure + ", domain = " + domain
+                + ", path = " + path + ", value = " + value + ", httpOnly = " + httpOnly + ", comment = " + comment
+                + "]";
     }
 }
-

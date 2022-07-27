@@ -1,15 +1,18 @@
 package com.smartbear.har.model;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-
-import java.util.List;
 
 /**
  * This object contains detailed info about the response.
  *
- * @see <a href="http://www.softwareishard.com/blog/har-12-spec/#response">specification</a>
+ * @see <a href=
+ *      "http://www.softwareishard.com/blog/har-12-spec/#response">specification</a>
  */
 @JsonPropertyOrder({
         "status",
@@ -38,17 +41,18 @@ public class HarResponse {
 
     @JsonCreator
     public HarResponse(@JsonProperty("status") int status, @JsonProperty("statusText") String statusText,
-                       @JsonProperty("httpVersion") String httpVersion, @JsonProperty("cookies") List<HarCookie> cookies,
-                       @JsonProperty("headers") List<HarHeader> headers, @JsonProperty("content") HarContent content,
-                       @JsonProperty("redirectURL") String redirectURL, @JsonProperty("headersSize") Long headersSize,
-                       @JsonProperty("bodySize") Long bodySize, @JsonProperty("comment") String comment) {
+            @JsonProperty("httpVersion") String httpVersion, @JsonProperty("cookies") List<HarCookie> cookies,
+            @JsonProperty("headers") List<HarHeader> headers, @JsonProperty("content") HarContent content,
+            @JsonProperty("redirectURL") @JsonInclude(Include.ALWAYS) String redirectURL,
+            @JsonProperty("headersSize") Long headersSize,
+            @JsonProperty("bodySize") Long bodySize, @JsonProperty("comment") String comment) {
         this.status = status;
         this.statusText = statusText;
         this.httpVersion = httpVersion;
         this.cookies = cookies;
         this.headers = headers;
         this.content = content;
-        this.redirectURL = redirectURL;
+        this.redirectURL = redirectURL == null ? "" : redirectURL;
         this.headersSize = headersSize;
         this.bodySize = bodySize;
         this.comment = comment;
@@ -96,8 +100,9 @@ public class HarResponse {
 
     @Override
     public String toString() {
-        return "HarResponse [content = " + content + ", headers = " + headers + ", bodySize = " + bodySize + ", httpVersion = " + httpVersion + ", status = " + status + ", redirectURL = " + redirectURL + ", statusText = " + statusText + ", comment = " + comment + ", cookies = " + cookies + ", headersSize = " + headersSize + "]";
+        return "HarResponse [content = " + content + ", headers = " + headers + ", bodySize = " + bodySize
+                + ", httpVersion = " + httpVersion + ", status = " + status + ", redirectURL = " + redirectURL
+                + ", statusText = " + statusText + ", comment = " + comment + ", cookies = " + cookies
+                + ", headersSize = " + headersSize + "]";
     }
 }
-
-
