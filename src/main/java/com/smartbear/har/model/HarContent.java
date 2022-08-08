@@ -1,13 +1,17 @@
 package com.smartbear.har.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
- * This object describes details about response content (embedded in response object).
+ * This object describes details about response content (embedded in response
+ * object).
  *
- * @see <a href="http://www.softwareishard.com/blog/har-12-spec/#content">specification</a>
+ * @see <a href=
+ *      "http://www.softwareishard.com/blog/har-12-spec/#content">specification</a>
  */
 @JsonPropertyOrder({
         "size",
@@ -26,8 +30,9 @@ public class HarContent {
 
     @JsonCreator
     public HarContent(@JsonProperty("size") Long size, @JsonProperty("compression") Long compression,
-                      @JsonProperty("mimeType") String mimeType, @JsonProperty("text") String text,
-                      @JsonProperty("comment") String comment) {
+            @JsonProperty("mimeType") String mimeType,
+            @JsonProperty("text") @JsonInclude(Include.NON_EMPTY) String text,
+            @JsonProperty("comment") String comment) {
         this.size = size;
         this.compression = compression;
         this.mimeType = mimeType;
@@ -57,7 +62,7 @@ public class HarContent {
 
     @Override
     public String toString() {
-        return "HarContent [text = " + text + ", comment = " + comment + ", compression = " + compression + ", mimeType = " + mimeType + ", size = " + size + "]";
+        return "HarContent [text = " + text + ", comment = " + comment + ", compression = " + compression
+                + ", mimeType = " + mimeType + ", size = " + size + "]";
     }
 }
-
