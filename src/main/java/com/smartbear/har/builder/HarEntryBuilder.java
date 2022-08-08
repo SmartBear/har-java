@@ -1,13 +1,14 @@
 package com.smartbear.har.builder;
 
-import com.fasterxml.jackson.databind.util.ISO8601DateFormat;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+
 import com.smartbear.har.model.HarCache;
 import com.smartbear.har.model.HarEntry;
 import com.smartbear.har.model.HarRequest;
 import com.smartbear.har.model.HarResponse;
 import com.smartbear.har.model.HarTimings;
-
-import java.util.Date;
 
 public class HarEntryBuilder {
     private String pageref;
@@ -21,6 +22,9 @@ public class HarEntryBuilder {
     private String connection;
     private String comment;
 
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss.SSSSSSS'Z'")
+            .withZone(ZoneId.of("UTC"));
+
     public HarEntryBuilder withPageref(String pageref) {
         this.pageref = pageref;
         return this;
@@ -31,8 +35,8 @@ public class HarEntryBuilder {
         return this;
     }
 
-    public HarEntryBuilder withStartedDateTime(Date startedDateTime) {
-        this.startedDateTime = new ISO8601DateFormat().format(startedDateTime);
+    public HarEntryBuilder withStartedDateTime(Instant startedDateTime) {
+        this.startedDateTime = startedDateTime.toString();
         return this;
     }
 
@@ -77,6 +81,7 @@ public class HarEntryBuilder {
     }
 
     public HarEntry build() {
-        return new HarEntry(pageref, startedDateTime, time, request, response, cache, timings, serverIPAddress, connection, comment);
+        return new HarEntry(pageref, startedDateTime, time, request, response, cache, timings, serverIPAddress,
+                connection, comment);
     }
 }
