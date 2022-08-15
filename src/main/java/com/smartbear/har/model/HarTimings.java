@@ -1,13 +1,17 @@
 package com.smartbear.har.model;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 /**
- * This object describes various phases within request-response round trip. All times are specified in milliseconds.
+ * This object describes various phases within request-response round trip. All
+ * times are specified in milliseconds.
  *
- * @see <a href="http://www.softwareishard.com/blog/har-12-spec/#timings">specification</a>
+ * @see <a href=
+ *      "http://www.softwareishard.com/blog/har-12-spec/#timings">specification</a>
  */
 @JsonPropertyOrder({
         "blocked",
@@ -31,10 +35,13 @@ public class HarTimings {
     private String comment;
 
     @JsonCreator
-    public HarTimings(@JsonProperty("blocked") Long blocked, @JsonProperty("dns") Long dns,
-                      @JsonProperty("connect") Long connect, @JsonProperty("send") Long send,
-                      @JsonProperty("wait") Long wait, @JsonProperty("receive") Long receive,
-                      @JsonProperty("ssl") Long ssl, @JsonProperty("comment") String comment) {
+    public HarTimings(@JsonProperty("blocked") @JsonInclude(Include.NON_DEFAULT) Long blocked,
+            @JsonProperty("dns") @JsonInclude(Include.NON_DEFAULT) Long dns,
+            @JsonProperty("connect") @JsonInclude(Include.NON_DEFAULT) Long connect,
+            @JsonProperty("send") Long send,
+            @JsonProperty("wait") Long wait, @JsonProperty("receive") Long receive,
+            @JsonProperty("ssl") @JsonInclude(Include.NON_DEFAULT) Long ssl,
+            @JsonProperty("comment") @JsonInclude(Include.NON_EMPTY) String comment) {
         this.blocked = blocked;
         this.dns = dns;
         this.connect = connect;
@@ -79,7 +86,8 @@ public class HarTimings {
 
     @Override
     public String toString() {
-        return "HarTimings [send = " + send + ", connect = " + connect + ", dns = " + dns + ", ssl = " + ssl + ", blocked = " + blocked + ", wait = " + wait + ", comment = " + comment + ", receive = " + receive + "]";
+        return "HarTimings [send = " + send + ", connect = " + connect + ", dns = " + dns + ", ssl = " + ssl
+                + ", blocked = " + blocked + ", wait = " + wait + ", comment = " + comment + ", receive = " + receive
+                + "]";
     }
 }
-
